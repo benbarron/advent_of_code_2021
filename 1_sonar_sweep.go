@@ -18,18 +18,6 @@ func getInputData(filepath string) ([]string, error) {
 	return lines, nil
 }
 
-//199  A			1
-//200  A B			1,2
-//208  A B C		1,2,3
-//210    B C D		2,3,4
-//200  E   C D		1,3,4
-//207  E F   D
-//240  E F G
-//269    F G H
-//260      G H
-//263        H
-
-
 func part_one(data []string) int {
 	prev := 0
 	inc_count := 0
