@@ -1,4 +1,4 @@
-package sonar_sweep
+package main
 
 import (
 	"fmt"
@@ -36,11 +36,11 @@ func part_two(data []string) int {
 	prev := 0
 	inc_count := 0
 
-	for i:= 0; i < len(data) - 2 ; i++ {
+	for i := 0; i < len(data)-2; i++ {
 		v1, _ := strconv.Atoi(data[i])
 		v2, _ := strconv.Atoi(data[i+1])
 		v3, _ := strconv.Atoi(data[i+2])
-		measurement := v1+v2+v3
+		measurement := v1 + v2 + v3
 
 		if measurement > prev && i > 0 {
 			inc_count++
@@ -52,7 +52,7 @@ func part_two(data []string) int {
 
 func main() {
 	if len(os.Args) < 2 {
-		panic(fmt.Errorf("USAGE: go run ./1_sonar_sweep.go <input_file_path>"))
+		panic(fmt.Errorf("USAGE: go run ./01/main.go <input_file_path>"))
 	}
 
 	data, err := getInputData(os.Args[1])
