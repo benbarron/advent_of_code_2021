@@ -54,7 +54,7 @@ func partOne(data [][]int) int {
 	return int(gammaRate) * int(epsilonRate)
 }
 
-func partTwo() int {
+func partTwo(data [][]int) int {
 
 	return 0
 }
@@ -70,11 +70,6 @@ func main() {
 		panic(err)
 	}
 
-	for _, v := range data {
-		fmt.Println(v)
-	}
-	fmt.Println("-----------------------------------------------------")
-
 	fmt.Printf("Part 1: %d\n", partOne(data))
-	// fmt.Printf("Part 2: %d\n", partTwo(commands))
+	fmt.Printf("Part 2: %d\n", partTwo(data))
 }
