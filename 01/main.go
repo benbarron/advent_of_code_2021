@@ -18,7 +18,7 @@ func getInputData(filepath string) ([]string, error) {
 	return lines, nil
 }
 
-func part_one(data []string) int {
+func partOne(data []string) int {
 	prev := 0
 	inc_count := 0
 
@@ -32,7 +32,7 @@ func part_one(data []string) int {
 	return inc_count
 }
 
-func part_two(data []string) int {
+func partTwo(data []string) int {
 	prev := 0
 	inc_count := 0
 
@@ -60,6 +60,6 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Printf("Part 1: %d\n", part_one(data))
-	fmt.Printf("Part 1: %d\n", part_two(data))
+	fmt.Printf("Part 1: %d\n", partOne(data))
+	fmt.Printf("Part 2: %d\n", partTwo(data))
 }
