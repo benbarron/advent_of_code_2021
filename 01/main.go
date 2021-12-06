@@ -1,4 +1,4 @@
-package main
+package sonar_sweep
 
 import (
 	"fmt"
