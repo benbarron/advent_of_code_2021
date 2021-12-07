@@ -18,8 +18,6 @@ func getInputData(filepath string) ([][]int, error) {
 	var cols int = len(lines[0])
 	var rows int = len(lines)
 
-	// fmt.Printf("%d, %d\n", cols, rows)
-
 	var array [][]int
 	for i := 0; i < rows; i++ {
 		var inner []int = []int{}
@@ -54,9 +52,69 @@ func partOne(data [][]int) int {
 	return int(gammaRate) * int(epsilonRate)
 }
 
-func partTwo(data [][]int) int {
+func filterNthBit(gauge string, bitNumber int, data [][]int) [][]int {
+	if len(data) == 1 {
+		return data
+	}
 
-	return 0
+	var count [2]int = [2]int{0, 0}
+	var filteredData [][]int = [][]int{}
+
+	for j := 0; j < len(data); j++ {
+		count[data[j][bitNumber]]++
+	}
+
+	if gauge == "o2" {
+		if count[0] > count[1] {
+			for i := 0; i < len(data); i++ {
+				if data[i][bitNumber] == 0 {
+					filteredData = append(filteredData, data[i])
+				}
+			}
+		} else {
+			for i := 0; i < len(data); i++ {
+				if data[i][bitNumber] == 1 {
+					filteredData = append(filteredData, data[i])
+				}
+			}
+		}
+	} else {
+		if count[0] > count[1] {
+			for i := 0; i < len(data); i++ {
+				if data[i][bitNumber] == 1 {
+					filteredData = append(filteredData, data[i])
+				}
+			}
+		} else {
+			for i := 0; i < len(data); i++ {
+				if data[i][bitNumber] == 0 {
+					filteredData = append(filteredData, data[i])
+				}
+			}
+		}
+	}
+
+	return filterNthBit(gauge, bitNumber+1, filteredData)
+}
+
+func partTwo(data [][]int) int {
+	oxygenData := filterNthBit("o2", 0, data)
+	carbonData := filterNthBit("co2", 0, data)
+
+	var oxygenBinary string = ""
+	var carbonBinary string = ""
+
+	for _, e := range oxygenData[0] {
+		oxygenBinary += fmt.Sprintf("%d", e)
+	}
+	for _, e := range carbonData[0] {
+		carbonBinary += fmt.Sprintf("%d", e)
+	}
+
+	oxygenRating, _ := strconv.ParseInt(oxygenBinary, 2, 64)
+	carbonRating, _ := strconv.ParseInt(carbonBinary, 2, 64)
+
+	return int(carbonRating) * int(oxygenRating)
 }
 
 func main() {
