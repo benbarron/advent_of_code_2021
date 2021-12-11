@@ -138,5 +138,9 @@ func main() {
 	}
 
 	fmt.Printf("Part 1: %d\n", partOne(data))
-	fmt.Printf("Part 2: %d\n", partTwo(data))
+ 	fmt.Printf("Part 2: %d\n", partTwo(data))
+
 }
+
+
+
